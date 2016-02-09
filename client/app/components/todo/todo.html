@@ -1,0 +1,23 @@
+<div layout="column" layout-padding class="todo">
+  <h1 class="margin-less md-display-1 text-center">Todo List</h1>
+  <div class="todo-item" ng-repeat="todoItem in todoCtrl.todoItems" layout="row">
+    <div flex="85" ng-bind="todoItem.name"></div>
+    <div flex="15">
+      <a href="javascript:void(0)" ng-click="todoCtrl.markDone(todoItem)" class="material-icons todo-action check">check</a>
+      <a href="javascript:void(0)" ng-click="todoCtrl.markDone(todoItem)" class="material-icons todo-action edit">edit</a>
+    </div>
+  </div>
+  <form layout="row" name="todoCtrl.todoForm" class="todo-form" ng-submit="todoCtrl.addItem()" >
+    <div flex="80">
+      <md-input-container class="md-block">
+        <label>Todo Item</label>
+        <input ng-model="todoCtrl.item.name" required>
+      </md-input-container>
+    </div>
+    <div flex="20">
+      <md-button type="submit" class="md-fab md-primary md-button md-ink-ripple" ng-disabled="todoCtrl.todoForm.$invalid" ng-click="todoCtrl.addItem()">
+        <md-icon class="material-icons">add</md-icon>
+      </md-button>
+    </div>
+  </div>
+</div>

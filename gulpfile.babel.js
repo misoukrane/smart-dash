@@ -80,9 +80,9 @@ gulp.task('serve', () => {
         stats: {
           colors: colorsSupported,
           chunks: false,
-          modules: false
+          modules: false,
         },
-        publicPath: config.output.publicPath
+        publicPath: config.output.publicPath,
       }),
       webpachHotMiddelware(compiler)
     ]
