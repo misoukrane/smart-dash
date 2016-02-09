@@ -1,5 +1,3 @@
-/* global expect */
-/* global inject */
 import AboutModule from './about';
 import AboutController from './about.controller';
 import AboutComponent from './about.component';

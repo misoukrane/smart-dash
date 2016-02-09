@@ -1,9 +1,12 @@
-<nav class="navbar">
-  <div class="logo">
-    <md-button class="md-raised md-warn">Warn</md-button>
-    <h1><a ui-sref="home">{{ vm.name }}</a></h1>
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <md-button class="md-icon-button" aria-label="Settings" ui-sref="home">
+      <md-icon md-font-icon="material-icons">menu</md-icon>
+    </md-button>
+    <h2>
+      <a ui-sref="home"><span>Smart Dash</span></a>
+    </h2>
+    <span flex></span>
+    <md-button class="md-raised" ui-sref="about">About</md-button>
   </div>
-  <div class="nav-links">
-    <span><a ui-sref="about">about</a></span>
-  </div>
-</nav>
+</md-toolbar>

@@ -4,8 +4,9 @@ import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
 import material from 'angular-material';
-import 'angular-material/angular-material.css';
 import 'normalize.css';
+import 'angular-material/angular-material.css';
+import './common/common.styl';
 
 angular.module('app', [
   uiRouter,
