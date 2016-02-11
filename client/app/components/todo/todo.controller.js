@@ -1,25 +1,48 @@
 class TodoController {
-  constructor() {
-    this.todoItems = [
-      {name: 'Item 1', done: false},
-      {name: 'Item 2', done: false},
-    ];
+  constructor(todoService) {
+    'ngInject';
+    this.todoService = todoService;
+    this.filter = 'active';
+    this.editing = false;
+    this.itemToUpdate = null;
+    this.itemName = '';
   }
 
   addItem() {
-    this.item.done = false;
-    var item = angular.copy(this.item);
-    this.todoItems.push(item);
-
-    // Clear the form.
-    this.item.name = '';
-    this.todoForm.$setPristine();
-    this.todoForm.$setUntouched();
+    this.todoService.add(this.itemName, this.filter);
+    this.clearForm();
   }
 
-  markDone(todoItem) {
+  toggle(todoItem) {
+    this.todoService.toggle(todoItem);
+  }
+
+  edit(todoItem) {
+    this.editing = true;
+    this.itemToUpdate = todoItem;
     console.log(todoItem);
-    todoItem.done = true;
+    this.itemName = this.itemToUpdate.name;
+  }
+
+  updateItem() {
+    this.todoService.update(this.itemToUpdate, this.itemName);
+    this.editing = false;
+    this.itemToUpdate = null;
+    this.clearForm();
+  }
+
+  submit() {
+    if (this.editing) {
+      this.updateItem();
+    } else {
+      this.addItem();
+    }
+  }
+
+  clearForm() {
+    this.itemName = '';
+    this.todoForm.$setPristine();
+    this.todoForm.$setUntouched();
   }
 }
 

@@ -1,22 +1,30 @@
 <div layout="column" layout-padding class="todo">
   <h1 class="margin-less md-display-1 text-center">Todo List</h1>
-  <div class="todo-item" ng-repeat="todoItem in todoCtrl.todoItems" layout="row">
-    <div flex="85" ng-bind="todoItem.name"></div>
-    <div flex="15">
-      <a href="javascript:void(0)" ng-click="todoCtrl.markDone(todoItem)" class="material-icons todo-action check">check</a>
-      <a href="javascript:void(0)" ng-click="todoCtrl.markDone(todoItem)" class="material-icons todo-action edit">edit</a>
+   <md-radio-group style="text-align: center" ng-model="todoCtrl.filter">
+      <md-radio-button value="active" class="md-primary inline">Active</md-radio-button>
+      <md-radio-button value="completed" class="md-primary inline"> Completed </md-radio-button>
+      <md-radio-button value="all" class="md-primary inline"> All </md-radio-button>
+   </md-radio-group>
+   <div class="todo-items-holder">
+    <div class="todo-item" ng-repeat="todoItem in todoCtrl.todoService.list(todoCtrl.filter)" layout="row">
+      <div flex="85" ng-class="{strike: todoItem.done}" ng-bind="todoItem.name"></div>
+      <div flex="15">
+        <a href="javascript:void(0)" ng-click="todoCtrl.toggle(todoItem)" class="material-icons todo-action check">check</a>
+        <a href="javascript:void(0)" ng-click="todoCtrl.edit(todoItem)" ng-hide="todoItem.done" class="material-icons todo-action edit">edit</a>
+      </div>
     </div>
-  </div>
-  <form layout="row" name="todoCtrl.todoForm" class="todo-form" ng-submit="todoCtrl.addItem()" >
+   </div>
+  <form layout="row" name="todoCtrl.todoForm" class="todo-form" ng-submit="todoCtrl.submit()" >
     <div flex="80">
       <md-input-container class="md-block">
         <label>Todo Item</label>
-        <input ng-model="todoCtrl.item.name" required>
+        <input ng-model="todoCtrl.itemName" required>
       </md-input-container>
     </div>
     <div flex="20">
-      <md-button type="submit" class="md-fab md-primary md-button md-ink-ripple" ng-disabled="todoCtrl.todoForm.$invalid" ng-click="todoCtrl.addItem()">
-        <md-icon class="material-icons">add</md-icon>
+      <md-button  type="submit" class="md-fab md-primary md-button md-ink-ripple" ng-disabled="todoCtrl.todoForm.$invalid" ng-click="todoCtrl.submit()">
+        <md-icon ng-hide="todoCtrl.editing" class="material-icons">add</md-icon>
+        <md-icon ng-hide="!todoCtrl.editing" class="material-icons">edit</md-icon>
       </md-button>
     </div>
   </div>
