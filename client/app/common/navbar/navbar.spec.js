@@ -4,7 +4,8 @@ import NavbarComponent from './navbar.component';
 import NavbarTemplate from './navbar.html';
 
 describe('Navbar', () => {
-  let $rootScope, makeController;
+  let $rootScope;
+  let makeController;
 
   beforeEach(window.module(NavbarModule.name));
   beforeEach(inject((_$rootScope_) => {
@@ -23,14 +24,6 @@ describe('Navbar', () => {
     it('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
       let controller = makeController();
       expect(controller).to.have.property('name');
-    });
-  });
-
-  describe('Template', () => {
-    // template specs
-    // tip: use regex to ensure correct bindings are used e.g., {{  }}
-    it('has name in template [REMOVE]', () => {
-      expect(NavbarTemplate).to.match(/{{\s?vm\.name\s?}}/g);
     });
   });
 
