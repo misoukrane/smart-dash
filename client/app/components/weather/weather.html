@@ -1,0 +1,56 @@
+<div layout="column" layout-padding class="hn">
+  <h1 class="margin-less md-display-1 text-center">{{ weatherCtrl.title }}</h1>
+  <md-input-container>
+    <label>City</label>
+    <md-select ng-model="weatherCtrl.city">
+      <md-option ng-repeat="city in weatherCtrl.cities" value="{{city.id}}">
+        {{city.name}}
+      </md-option>
+    </md-select>
+  </md-input-container>
+  <md-progress-circular ng-hide="weatherCtrl.loading === false" class="weather-spinner" md-mode="indeterminate"></md-progress-circular>
+  <br>
+  <div ng-if="weatherCtrl.loading === false">
+    <div>
+      <div layout="row">
+        <div flex="70" class="text-center"><span class="margin-less md-display-1">{{weatherCtrl.cityFullName}}</span></div>
+        <div flex="30"><img ng-src={{weatherCtrl.getImageSource()}} /></div>
+      </div>
+      <h6 class="text-center md-display-subhead margin-less">{{weatherCtrl.weather[0].description}}</h6>
+      <h6 class="text-center md-display-1 margin-less">{{weatherCtrl.mainWeather.temp}}&#8451;</h6>
+      <br>
+      <div layout="row">
+        <div flex="33">
+          <div layout="row">
+            <div flex="50"><img class="weather-icon" src="/weather-icons/Wind.svg"></div>
+            <div flex="50">
+              <span class="md-body-2">
+                {{weatherCtrl.wind.speed}} mPh
+              </span>
+            </div>
+          </div>
+        </div>
+        <div flex="33">
+          <div layout="row">
+            <div flex="50"><img class="weather-icon" src="/weather-icons/Compass-North.svg"></div>
+            <div flex="50">
+              <span class="md-body-2">
+                {{weatherCtrl.mainWeather.humidity}}%
+              </span>
+            </div>
+          </div>
+        </div>
+        <div flex="33">
+          <div layout="row">
+            <div flex="50"><img class="weather-icon" src="/weather-icons/Thermometer-100.svg"></div>
+            <div flex="50">
+              <span class="md-body-2">
+                {{weatherCtrl.mainWeather.temp_max}} &#8451;
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -16,7 +16,6 @@ class HackerNewsController {
             this.hackerNewsService.getItem(value)
               .then(
                 (response) => {
-                  console.log(response.data);
                   this.items.push(response.data);
                 }
               )
