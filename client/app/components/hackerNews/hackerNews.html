@@ -1,0 +1,13 @@
+<div layout="column" layout-padding class="hn">
+  <h1 class="margin-less md-display-1 text-center">{{ hnCtrl.title }}</h1>
+    <md-progress-circular ng-hide="hnCtrl.items.length !== 0" md-mode="indeterminate"></md-progress-circular>
+    <ul class="hn-list">
+      <li class="hn-list-item"  ng-repeat="item in hnCtrl.items">
+        <span class="rounded hn-list-item-score">{{ item.score}}</span>
+        <a class="hn-list-item-link" target="_blank" href="{{item.url}}">
+          {{ item.title | limitTo:45}}
+        </a>
+        <span ng-show="item.title.length > 45">...</span>
+      </li>
+    </ul>
+</div>
