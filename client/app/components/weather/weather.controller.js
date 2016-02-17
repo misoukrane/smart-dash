@@ -22,7 +22,6 @@ class WeatherController {
         this.mainWeather = response.data.main;
         this.wind = response.data.wind;
         this.rain = response.data.rain;
-        console.log(response.data);
       });
   }
 

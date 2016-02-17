@@ -18,10 +18,15 @@ class HackerNewsController {
                 (response) => {
                   this.items.push(response.data);
                 }
-              )
+              );
           });
         }
       );
+  }
+
+  reload() {
+    this.items = [];
+    this.loadItems();
   }
 }
 

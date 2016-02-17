@@ -7,6 +7,7 @@ import AppComponent from './app.component';
 import material from 'angular-material';
 import 'normalize.css';
 import 'angular-material/angular-material.css';
+import 'animate.css';
 import './common/common.styl';
 
 angular.module('app', [

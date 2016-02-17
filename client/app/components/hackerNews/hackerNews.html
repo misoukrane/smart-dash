@@ -1,5 +1,8 @@
 <div layout="column" layout-padding class="hn">
-  <h1 class="margin-less md-display-1 text-center">{{ hnCtrl.title }}</h1>
+  <h1 class="margin-less md-display-1 text-center">
+    {{ hnCtrl.title }}
+    <a class="material-icons hn-reload" ng-hide="hnCtrl.items.length === 0" ng-click="hnCtrl.reload()" href="javascript:void(0)">cached</a>
+  </h1>
   <md-progress-circular ng-hide="hnCtrl.items.length !== 0" class="hn-spinner" md-mode="indeterminate"></md-progress-circular>
   <ul class="hn-list">
     <li class="hn-list-item" ng-repeat="item in hnCtrl.items">
